@@ -54,7 +54,11 @@ public:
         other.m_Capacity = INITIAL_CAPACITY;
     }
 
-    ~Stack() { Clear(); }
+    ~Stack()
+    {
+        Clear();
+        ::operator delete(m_Container, m_Capacity * sizeof(T));
+    }
 
     /**
      * @brief Copy assignment operator.
